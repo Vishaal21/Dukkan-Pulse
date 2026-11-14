@@ -1,0 +1,4 @@
+fastapi
+uvicorn[standard]
+# httpx is used by fastapi.testclient in the test suite
+httpx

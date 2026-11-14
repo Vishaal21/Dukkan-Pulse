@@ -1,0 +1,54 @@
+product_id,sku,name,category,unit,pack_size,cost_price,selling_price,supplier_id,opening_stock
+P001,NDL-001,Maggi Noodles 70g,Noodles,packet,70g,12.0,14.0,SUP-02,178
+P002,NDL-002,Maggi Noodles 140g,Noodles,packet,140g,22.0,26.0,SUP-03,125
+P003,NDL-003,Top Ramen 70g,Noodles,packet,70g,11.0,13.0,SUP-04,21
+P004,NDL-004,Yippee Noodles 60g,Noodles,packet,60g,10.0,12.0,SUP-05,129
+P005,BSC-005,Parle-G Biscuit 250g,Biscuits,packet,250g,20.0,25.0,SUP-01,78
+P006,BSC-006,Parle-G Biscuit 100g,Biscuits,packet,100g,9.0,10.0,SUP-02,85
+P007,BSC-007,Britannia Good Day 200g,Biscuits,packet,200g,30.0,40.0,SUP-03,142
+P008,BSC-008,Britannia Marie 250g,Biscuits,packet,250g,26.0,32.0,SUP-04,251
+P009,BSC-009,Oreo Biscuit 120g,Biscuits,packet,120g,25.0,30.0,SUP-05,158
+P010,BSC-010,Britannia NutriChoice 300g,Biscuits,packet,300g,35.0,45.0,SUP-01,124
+P011,DRY-011,Amul Butter 100g,Dairy,pack,100g,52.0,58.0,SUP-02,18
+P012,DRY-012,Amul Butter 500g,Dairy,pack,500g,245.0,265.0,SUP-03,156
+P013,DRY-013,Amul Milk 500ml,Dairy,pouch,500ml,25.0,28.0,SUP-04,139
+P014,DRY-014,Amul Cheese 200g,Dairy,pack,200g,110.0,125.0,SUP-05,122
+P015,DRY-015,Mother Dairy Curd 400g,Dairy,cup,400g,35.0,42.0,SUP-01,154
+P016,GRO-016,Tata Salt 1kg,Grocery,packet,1kg,22.0,28.0,SUP-02,126
+P017,BEV-017,Tata Tea Gold 250g,Beverages,packet,250g,130.0,150.0,SUP-03,92
+P018,BEV-018,Red Label Tea 250g,Beverages,packet,250g,100.0,115.0,SUP-04,144
+P019,BEV-019,Nescafe Classic 50g,Beverages,jar,50g,150.0,175.0,SUP-05,206
+P020,BEV-020,Bournvita 500g,Beverages,jar,500g,210.0,235.0,SUP-01,102
+P021,BEV-021,Coca Cola 750ml,Beverages,bottle,750ml,32.0,40.0,SUP-02,150
+P022,BEV-022,Thums Up 750ml,Beverages,bottle,750ml,32.0,40.0,SUP-03,18
+P023,BEV-023,Bisleri Water 1L,Beverages,bottle,1L,12.0,20.0,SUP-04,13
+P024,BEV-024,Real Juice 1L,Beverages,carton,1L,95.0,110.0,SUP-05,24
+P025,BEV-025,Rasna Powder 500g,Beverages,pack,500g,90.0,105.0,SUP-01,65
+P026,SNK-026,Lays Classic 52g,Snacks,packet,52g,15.0,20.0,SUP-02,98
+P027,SNK-027,Kurkure 90g,Snacks,packet,90g,16.0,20.0,SUP-03,139
+P028,SNK-028,Haldiram Bhujia 200g,Snacks,packet,200g,45.0,55.0,SUP-04,123
+P029,SNK-029,Bingo Mad Angles 66g,Snacks,packet,66g,15.0,20.0,SUP-05,107
+P030,GRO-030,Aashirvaad Atta 5kg,Grocery,bag,5kg,210.0,240.0,SUP-01,103
+P031,GRO-031,Fortune Sunflower Oil 1L,Grocery,bottle,1L,120.0,135.0,SUP-02,90
+P032,GRO-032,Saffola Cooking Oil 1L,Grocery,bottle,1L,140.0,160.0,SUP-03,117
+P033,GRO-033,Toor Dal 1kg,Grocery,packet,1kg,130.0,150.0,SUP-04,106
+P034,GRO-034,Basmati Rice 1kg,Grocery,packet,1kg,110.0,130.0,SUP-05,19
+P035,GRO-035,Sugar 1kg,Grocery,packet,1kg,42.0,50.0,SUP-01,144
+P036,PC-036,Colgate Toothpaste 100g,Personal Care,tube,100g,45.0,55.0,SUP-02,93
+P037,PC-037,Colgate Toothpaste 200g,Personal Care,tube,200g,82.0,95.0,SUP-03,31
+P038,PC-038,Dove Soap 100g,Personal Care,bar,100g,42.0,52.0,SUP-04,195
+P039,PC-039,Lifebuoy Soap 100g,Personal Care,bar,100g,28.0,35.0,SUP-05,163
+P040,PC-040,Clinic Plus Shampoo 180ml,Personal Care,bottle,180ml,95.0,110.0,SUP-01,128
+P041,HHD-041,Surf Excel 1kg,Household,packet,1kg,105.0,120.0,SUP-02,202
+P042,HHD-042,Vim Dishwash Bar 200g,Household,bar,200g,18.0,22.0,SUP-03,105
+P043,HHD-043,Harpic 500ml,Household,bottle,500ml,85.0,99.0,SUP-04,110
+P044,CNF-044,Dairy Milk 40g,Confectionery,bar,40g,20.0,25.0,SUP-05,170
+P045,CNF-045,KitKat 27g,Confectionery,bar,27g,18.0,22.0,SUP-01,130
+P046,SPC-046,Everest Turmeric 100g,Spices,packet,100g,25.0,32.0,SUP-02,142
+P047,SPC-047,MDH Chilli Powder 100g,Spices,packet,100g,38.0,48.0,SUP-03,192
+P048,SEA-048,Fleece Blanket Single,Seasonal,piece,single,250.0,350.0,SUP-04,118
+P049,SEA-049,Room Heater 2000W,Seasonal,piece,1 piece,900.0,1200.0,SUP-05,170
+P050,FRT-050,Sugarcane 1kg,Fruits,kg,1kg,25.0,35.0,SUP-01,93
+P051,FRT-051,Banana (dozen),Fruits,dozen,12 pc,40.0,60.0,SUP-02,100
+P052,FRT-052,Coconut (whole),Fruits,piece,1 piece,35.0,50.0,SUP-03,170
+P053,SWT-053,Thekua 500g,Sweets,pack,500g,90.0,120.0,SUP-04,126

@@ -1,0 +1,91 @@
+{
+  "source": "Simulated demo POS export (generated for DukaanPulse)",
+  "vendor": null,
+  "note": "Not an export from Paytm, Zoho or any real POS vendor. Fully simulated.",
+  "currency": "INR",
+  "generated_at": "2026-11-14T23:59:00",
+  "random_seed": 20261114,
+  "period": {
+    "start": "2025-11-15",
+    "end": "2026-11-14",
+    "days": 365
+  },
+  "record_counts": {
+    "suppliers": 5,
+    "products": 53,
+    "sales": 18185,
+    "purchase_receipts": 627,
+    "purchase_orders": 633,
+    "stock_adjustments": 17,
+    "inventory_snapshot": 53,
+    "weather": 365
+  },
+  "files": {
+    "suppliers.csv": [
+      "supplier_id",
+      "supplier_name",
+      "standard_lead_time_days",
+      "minimum_order_quantity",
+      "minimum_order_value"
+    ],
+    "products.csv": [
+      "product_id",
+      "sku",
+      "name",
+      "category",
+      "unit",
+      "pack_size",
+      "cost_price",
+      "selling_price",
+      "supplier_id",
+      "opening_stock"
+    ],
+    "sales.csv": [
+      "sale_id",
+      "invoice_id",
+      "sold_at",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "discount",
+      "total_amount"
+    ],
+    "purchase_receipts.csv": [
+      "receipt_id",
+      "purchase_order_id",
+      "supplier_id",
+      "product_id",
+      "received_at",
+      "received_quantity",
+      "unit_cost"
+    ],
+    "purchase_orders.csv": [
+      "purchase_order_id",
+      "supplier_id",
+      "product_id",
+      "ordered_quantity",
+      "received_quantity",
+      "remaining_quantity",
+      "order_date",
+      "expected_delivery_date",
+      "status"
+    ],
+    "stock_adjustments.csv": [
+      "adjustment_id",
+      "product_id",
+      "quantity",
+      "reason",
+      "adjusted_at"
+    ],
+    "inventory_snapshot.csv": [
+      "product_id",
+      "current_stock",
+      "snapshot_timestamp"
+    ],
+    "weather.csv": [
+      "date",
+      "temp_c",
+      "rain_mm"
+    ]
+  }
+}

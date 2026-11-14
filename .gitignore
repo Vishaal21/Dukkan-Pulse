@@ -1,0 +1,32 @@
+# Python
+backend/.venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Node / build output
+frontend/node_modules/
+frontend/dist/
+node_modules/
+dist/
+
+# Locally installed toolchain
+tools/
+
+# Env files (never commit secrets)
+.env
+.env.local
+.env.*.local
+# Keep the public templates (no secrets)
+!frontend/.env
+!backend/.env.example
+
+# Logs, OS and editor files
+*.log
+.DS_Store
+.vscode/
+.idea/
+
+.HANDOFF.md

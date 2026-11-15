@@ -1,0 +1,29 @@
+# Render blueprint for DukaanPulse (single-server deploy).
+#
+# One free web service runs the whole app: FastAPI serves the read-only /api
+# routes AND the built React frontend at "/". No database, so it is stateless.
+#
+# Deploy: Render dashboard -> New + -> Blueprint -> pick this repo. Render reads
+# this file, builds, and starts the service. Set GROQ_API_KEY when prompted
+# (it is marked sync:false, so it is never stored in this file).
+#
+# Keep-alive: Render free web services spin down after ~15 minutes idle. Ping
+# /api/health from an external cron (see README "Keep the free tier awake").
+services:
+  - type: web
+    name: dukaanpulse
+    runtime: python
+    plan: free
+    region: singapore
+    branch: main
+    healthCheckPath: /api/health
+    buildCommand: pip install -r backend/requirements.txt && (cd frontend && npm ci && npm run build)
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --app-dir backend
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.6
+      - key: NODE_VERSION
+        value: 20.18.1
+      # Secret: set this in the Render dashboard, never in this file.
+      - key: GROQ_API_KEY
+        sync: false

@@ -8,11 +8,14 @@ POS owns the data; DukaanPulse never writes it.
 Response shape (list endpoints):
     { "source": "simulated_demo_pos", "count": <n>, "items": [ ... ] }
 """
+import os
+
 import assistant
 import pos_data
 import recommendations
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 app = FastAPI(title="DukaanPulse API", version="0.3.0")
@@ -217,3 +220,17 @@ def assistant_ask(req: AskRequest):
     """Answer a free-text question about the store from the recommendation data.
     Uses the LLM if configured, otherwise a deterministic reply. Read only."""
     return assistant.answer_question(req.question)
+
+
+# ---------------------------------------------------------------------------
+# Serve the built frontend (single-deploy / production).
+#
+# Run `npm run build` in frontend/ first; that writes frontend/dist/. If that
+# folder exists we serve it here, so one server serves both the app files and
+# the /api routes. In local dev this folder is absent and Vite serves the UI
+# instead. Mounted LAST so it never shadows the API routes above.
+# ---------------------------------------------------------------------------
+_DIST = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
+
+if os.path.isdir(_DIST):
+    app.mount("/", StaticFiles(directory=_DIST, html=True), name="frontend")

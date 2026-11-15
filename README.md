@@ -68,6 +68,67 @@ Then open http://localhost:5173.
 
 Note: the backend does not auto-reload. Restart it after backend edits.
 
+## Deploy (serve everything from one server)
+
+The backend can also serve the built frontend, so a single web service runs the
+whole app. Build the UI first, then start the backend; if `frontend/dist/` exists,
+FastAPI serves it at `/` (mounted last, so the `/api` routes still win).
+
+```
+  cd frontend && PATH="$PWD/../tools/node/bin:$PATH" npm run build   # writes frontend/dist
+  cd ../backend && .venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+Then open http://localhost:8000 and the whole app loads from that one URL. The
+frontend calls `/api/...` on the same origin, so `VITE_API_BASE_URL` stays empty
+and there is no CORS to manage.
+
+### Deploy on Render (blueprint)
+
+This repo ships a `render.yaml` blueprint, so Render can create the whole web
+service for you in one step.
+
+1. Push this repo to GitHub (already the remote for this project).
+2. In the Render dashboard, choose New +, then Blueprint, and pick this repo.
+3. Render reads `render.yaml` and creates one free web service:
+   - Build: `pip install -r backend/requirements.txt && (cd frontend && npm ci && npm run build)`
+   - Start: `uvicorn main:app --host 0.0.0.0 --port $PORT --app-dir backend`
+   - Health check: `/api/health`
+4. When Render asks for `GROQ_API_KEY`, paste your key. It is marked `sync:false`
+   in `render.yaml`, so the value is stored in the dashboard and never committed.
+   Leave it empty to run without the LLM (the app falls back to deterministic replies).
+5. Open the service URL. The app and the API both load from that one URL.
+
+Deploying the frontend separately (Vercel/Netlify) also works: set the build env
+`VITE_API_BASE_URL=https://<your-backend-url>` and point it at the backend.
+
+Other hosts (Railway / Fly.io) use the same build and start commands:
+```
+  Build:  pip install -r backend/requirements.txt && (cd frontend && npm ci && npm run build)
+  Start:  uvicorn main:app --host 0.0.0.0 --port $PORT --app-dir backend
+  Env:    GROQ_API_KEY=<your key>
+```
+
+### Keep the free tier awake
+
+Render free web services spin down after about 15 minutes without traffic, and
+the next request pays a 30 to 60 second cold start. An external cron that pings
+the health endpoint keeps the service warm.
+
+Set up a free job on cron-job.org:
+```
+  URL:      https://<your-service>.onrender.com/api/health
+  Schedule: every 1 minute
+  Method:   GET
+```
+
+`scripts/keepalive.sh` does the same thing and can be wired into any cron:
+```
+  ./scripts/keepalive.sh https://<your-service>.onrender.com
+```
+It exits non-zero when the health check does not return 200, so a cron service
+can alert on failure.
+
 ## AI model (optional)
 
 The detailed reason and the assistant chat use **Groq** (`openai/gpt-oss-120b`,
@@ -141,7 +202,9 @@ update `END_DATE` and `GENERATED_AT` in the generator and regenerate.
     src/services/          backend first, demo fallback
     src/pages/             the six screens
     src/components/        shared UI
-  HANDOFF.md               running build notes and decisions
+  render.yaml              Render deploy blueprint
+  scripts/keepalive.sh     keeps a free host awake
 ```
 
-See `HANDOFF.md` for the full history, decisions and remaining work.
+The recommendation engine in `backend/recommendations.py` holds the decision
+logic. This README describes how to run, test and deploy the app.
